@@ -1,14 +1,11 @@
-
-
 import Vue from 'vue';
-
-import VueRouter from 'vue-router';
-
-Vue.use(VueRouter);
+import VueRouter from 'vue-router'
 
 // Importazione componenti pagine Vue.Router
 import Home from './pages/Home';
+import About from './pages/About';
 
+Vue.use( VueRouter )
 
 const router = new VueRouter({
     // specificare il tipo di scaffolding e struttura
@@ -20,11 +17,11 @@ const router = new VueRouter({
             name:'home',
             component: Home
         },
-        // {
-        //     path:'/hello',
-        //     name:'hello',
-        //     component: Hello,
-        // },
+        {
+            path:'/about',
+            name:'about',
+            component: About
+        },
     ]
 });
 
