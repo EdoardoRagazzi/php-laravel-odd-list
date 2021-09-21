@@ -7,17 +7,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Navbar dinamica con ciclo v-for and array costruito sullo script con data() return  -->
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <router-link :to="{name :'home'}" class="nav-link">Home</router-link>
+        <li class="nav-item" v-for="(link,index) in menuBoolpress" :key="index">
+          <router-link :to="{name : link.routeName}" class="nav-link">{{link.label}}</router-link>
         </li>
-        <li class="nav-item">
-          <router-link :to="{name: 'about'}" class="nav-link">About</router-link>
-        </li>
-      <li class="nav-item">
-          <router-link :to="{name: 'contact'}" class="nav-link">Contact</router-link>
-        </li>
-        
       </ul>
     </div>
   </div>
@@ -29,6 +23,29 @@
 
 export default {
     name: 'Header',
+    data(){
+      return{
+        menuBoolpress: [
+          {
+            label: 'Home',
+            routeName: 'home'
+          },
+          {
+            label: 'About',
+            routeName: 'about'
+          },
+          {
+            label: 'Contact',
+            routeName: 'contact'
+          },
+          {
+            label:'Post',
+            routeName:'post'
+          }
+  
+        ]
+      }
+    }
      
 }
 </script>
