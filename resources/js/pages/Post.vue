@@ -8,7 +8,7 @@
               <h5 class="card-title">{{post.title}}</h5>
               <p>{{post.created_at}}</p>
               <p class="card-text">{{post.content}}</p>
-              <a href="#" class="btn btn-primary">Details</a>
+              <router-link :to="{ name: 'post-detail', params:{slug: post.slug}}" class="btn btn-primary">Details</router-link>
             </div>
           </div>
           

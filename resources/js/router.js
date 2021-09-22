@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Post from './pages/Post';
+import SinglePost from './pages/SinglePost'
 
 Vue.use( VueRouter )
 
@@ -34,6 +35,12 @@ const router = new VueRouter({
             name:'post',
             component: Post
         }, 
+        {
+            path:'/post/:slug',
+            name: 'post-detail',
+            component: SinglePost
+        }
+      
     ]
 });
 

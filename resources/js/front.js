@@ -8,7 +8,7 @@ require('./bootstrap');
 import Vue from 'vue';
 import axios from 'axios';
 import App from './views/App';
-import router from './router'
+import router from './router';
 
 
 const app = new Vue({
