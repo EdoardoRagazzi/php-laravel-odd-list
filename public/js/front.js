@@ -2347,34 +2347,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Post' //   data(){
-  //     return{
-  //         callApi: 'http://127.0.0.1:8000/api/posts',
-  //         posts: [],
-  //          currentPage: 1 ,
-  //         lastPage: null
-  //     }
-  // },
-  // created(){
-  //     this.getPosts(1);
-  // },
-  // methods:{
-  //     getPosts(pagePost){
-  //         axios.get(this.callApi, {
-  //             params:{
-  //                 page: pagePost
-  //             }
-  //         })
-  //         .then(response => {
-  //             this.posts = response.data.results.data;
-  //              this.currentPage = response.data.results.current_page;
-  //             this.lastPage = response.data.results.last_page;
-  //         })
-  //         .catch();
-  //     }
-  // }
+  name: 'Post',
+  data: function data() {
+    return {
+      callApi: 'http://127.0.0.1:8000/api/posts',
+      posts: [],
+      currentPage: 1,
+      lastPage: null
+    };
+  },
+  created: function created() {
+    this.getPosts(1);
+  },
+  methods: {
+    getPosts: function getPosts(pagePost) {
+      var _this = this;
 
+      axios.get(this.callApi, {
+        params: {
+          page: pagePost
+        }
+      }).then(function (response) {
+        _this.posts = response.data.results.data;
+        _this.currentPage = response.data.results.current_page;
+        _this.lastPage = response.data.results.last_page;
+      })["catch"]();
+    }
+  }
 });
 
 /***/ }),
@@ -38292,17 +38309,17 @@ var render = function() {
       "div",
       { staticClass: "row" },
       _vm._l(_vm.posts, function(post) {
-        return _c("div", { key: _vm.key.id, staticClass: "col-sm-6" }, [
+        return _c("div", { key: post.id, staticClass: "col-sm-6" }, [
           _c("div", { staticClass: "card mt-3" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h5", { staticClass: "card-title" }, [
                 _vm._v(_vm._s(post.title))
               ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.formatData(post.created_at)))]),
+              _c("p", [_vm._v(_vm._s(post.created_at))]),
               _vm._v(" "),
               _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(_vm.truncate(post.content, 150)))
+                _vm._v(_vm._s(post.content))
               ]),
               _vm._v(" "),
               _c(
@@ -38315,7 +38332,57 @@ var render = function() {
         ])
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _c("nav", { attrs: { "aria-label": "Page navigation example " } }, [
+      _c("ul", { staticClass: "pagination mt-5" }, [
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: { disabled: _vm.currentPage == 1 }
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.getPosts(_vm.currentPage - 1)
+                  }
+                }
+              },
+              [_vm._v("Previous")]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: { disabled: _vm.currentPage == _vm.lastPage }
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.getPosts(_vm.currentPage + 1)
+                  }
+                }
+              },
+              [_vm._v("Next")]
+            )
+          ]
+        )
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
